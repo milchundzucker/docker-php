@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+DST_DIR=`php --ini | grep "Scan for additional .ini files in:" | awk '{print $7}'`
+
+if [ $1 = "on" ]; then
+	echo "zend_extension=xdebug.so" > ${DST_DIR}/xdebug.ini
+	echo "Xdebug extension activated"
+else
+	rm -f ${DST_DIR}/xdebug.ini
+	echo "Xdebug extension deactivated"
+fi
