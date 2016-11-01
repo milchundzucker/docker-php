@@ -24,6 +24,10 @@ RUN set -xe \
   && mv composer.phar /usr/local/bin/composer \
   && which composer \
   && composer --version \
+  && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing \
+  && chmod +x /usr/local/bin/phing \
+  && which phing \
+  && phing -version \
   && pecl install uopz-2.0.7 \
   && chmod +x /usr/local/bin/uopz \
   # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
