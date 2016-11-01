@@ -3,6 +3,7 @@ MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/xdebug /usr/local/bin/xdebug
+COPY assets/uopz /usr/local/bin/uopz
 
 RUN apt-get update && apt-get install -y \
   git-core \
@@ -23,11 +24,12 @@ RUN set -xe \
   && which composer \
   && composer --version \
   && pecl install uopz-2.0.7 \
-  && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
   && docker-php-ext-install opcache soap pdo_mysql \
   && php -m
   # && mkdir -p $HOME/.ssh \
   # && ls -l $HOME/.ssh
+  && chmod +x /usr/local/bin/uopz \
+  # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
 
 RUN pecl install xdebug \
   && chmod +x /usr/local/bin/xdebug
