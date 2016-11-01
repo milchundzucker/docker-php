@@ -24,6 +24,7 @@ RUN set -xe \
   && mv composer.phar /usr/local/bin/composer \
   && which composer \
   && composer --version \
+  && composer global require "fxp/composer-asset-plugin:~1.2" \
   && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing \
   && chmod +x /usr/local/bin/phing \
   && which phing \
