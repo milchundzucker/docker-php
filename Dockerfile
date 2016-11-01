@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
   rsync \
   ssh-client \
   libxml2-dev \
+  libssh2-1-dev \
   --no-install-recommends && apt-get clean
 
 RUN set -xe \
@@ -30,6 +31,8 @@ RUN set -xe \
   # && ls -l $HOME/.ssh
   && chmod +x /usr/local/bin/uopz \
   # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
+  && pecl install ssh2-0.13 \
+  && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
 
 RUN pecl install xdebug \
   && chmod +x /usr/local/bin/xdebug
