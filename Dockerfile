@@ -25,17 +25,15 @@ RUN set -xe \
   && which composer \
   && composer --version \
   && pecl install uopz-2.0.7 \
-  && docker-php-ext-install opcache soap pdo_mysql \
-  && php -m
-  # && mkdir -p $HOME/.ssh \
-  # && ls -l $HOME/.ssh
   && chmod +x /usr/local/bin/uopz \
   # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
   && pecl install ssh2-0.13 \
   && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
+  && docker-php-ext-install opcache soap pdo_mysql
 
 RUN pecl install xdebug \
-  && chmod +x /usr/local/bin/xdebug
+  && chmod +x /usr/local/bin/xdebug \
+  && php -m
   # && echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config
