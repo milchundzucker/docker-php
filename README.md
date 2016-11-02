@@ -45,4 +45,4 @@ job_name:
 * php opcache
 * php SOAP extension
 * php PDO_mysql extension
-* modified SSH client config to accept every host key for `*.milchunzucker.de`
+* modified SSH client config to accept every host key for `*.milchundzucker.de`
