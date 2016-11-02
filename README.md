@@ -6,7 +6,7 @@ tools, libraries, php-extensions and modified configurations.
 
 ## How to use this image
 
-There are two things you should now upfront:
+There are two things you should know upfront:
 
 1. This image was build with **xdebug** but turned it off by default to speed up composer. If you need xdebug 
 (i.e. code coverage with phpunit). You have to call `xdebug on` (and `xdebug off` to deactivate it again) before you run
