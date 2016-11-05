@@ -10,7 +10,7 @@ There are two things you should know upfront:
 
 1. This image was build with **xdebug** but turned it off by default to speed up composer. If you need xdebug 
 (i.e. code coverage with phpunit). You have to call `xdebug on` (and `xdebug off` to deactivate it again) before you run
-somehting which relies on xdebug.
+something which relies on xdebug.
 2. This image was also build with the **uopz** PHP extension, which is also turned off by default. If you need uopz
 (i.e. swizzling code to ease up testing PHP functions such as `header()`), you have to call `uopz on` (and `uopz off` to deactivate
 it again before you can run something which relies on uopz.
