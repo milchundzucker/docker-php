@@ -29,6 +29,7 @@ A common task is to run phpunit tests with code coverage:
 job_name:
   image: milchundzucker/php-essentials:5.6
   script:
+    - composer install
     - xdebug on
     - phpunit
   tags:
