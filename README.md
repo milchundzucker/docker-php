@@ -39,11 +39,14 @@ job_name:
 ## What's installed?
 * composer
 * Phing
+* PHP Extensions
+  * opcache
+  * pdo_mysql
+  * soap
+  * ssh2
+* VCS Tools
+  * git
+  * subversion
 * Shims to (de)activate xdebug and uopz
-* ssh2-extension
-* git and subversion CLI
 * rsync and ssh
-* php opcache
-* php SOAP extension
-* php PDO_mysql extension
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
