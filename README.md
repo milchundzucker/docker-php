@@ -40,6 +40,7 @@ job_name:
 * composer
 * Phing
 * PHP Extensions
+  * intl
   * opcache
   * pdo_mysql
   * soap

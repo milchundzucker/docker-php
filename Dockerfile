@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
   ssh-client \
   libxml2-dev \
   libssh2-1-dev \
+  libicu-dev \
   --no-install-recommends && apt-get clean
 
 RUN set -xe \
@@ -33,7 +34,7 @@ RUN set -xe \
   # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
   && pecl install ssh2-0.13 \
   && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
-  && docker-php-ext-install opcache soap pdo_mysql
+  && docker-php-ext-install opcache soap pdo_mysql intl
 
 RUN pecl install xdebug \
   && chmod +x /usr/local/bin/xdebug \
