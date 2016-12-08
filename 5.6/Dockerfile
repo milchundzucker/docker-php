@@ -16,7 +16,11 @@ RUN apt-get update && apt-get install -y \
   libicu-dev \
   --no-install-recommends && apt-get clean
 
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /composer
+
 RUN set -xe \
+  && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
   && cd /tmp \
   && php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php \
@@ -25,7 +29,7 @@ RUN set -xe \
   && mv composer.phar /usr/local/bin/composer \
   && which composer \
   && composer --version \
-  && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing \
+  && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing --silent \
   && chmod +x /usr/local/bin/phing \
   && which phing \
   && phing -version \
