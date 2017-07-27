@@ -32,7 +32,7 @@ RUN set -xe \
   && chmod +x /usr/local/bin/phing \
   && which phing \
   && phing -version \
-  && pecl install ssh2-1.0 \
+  && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl
 
