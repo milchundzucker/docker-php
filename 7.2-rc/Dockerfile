@@ -3,6 +3,7 @@ MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/xdebug /usr/local/bin/xdebug
+COPY assets/uopz /usr/local/bin/uopz
 
 RUN apt-get update && apt-get install -y \
   git-core \
