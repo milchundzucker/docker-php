@@ -2,7 +2,6 @@ FROM php:7.2-rc
 MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
 COPY assets/ssh_config /root/.ssh/config
-COPY assets/xdebug /usr/local/bin/xdebug
 COPY assets/uopz /usr/local/bin/uopz
 
 RUN apt-get update && apt-get install -y \
@@ -40,11 +39,6 @@ RUN set -xe \
   && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2
-
-RUN pecl install xdebug \
-  && chmod +x /usr/local/bin/xdebug \
-  && php -m
-  # && echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config
 
