@@ -40,6 +40,7 @@ job_name:
 * composer
 * Phing
 * PHP Extensions
+  * bz2
   * intl
   * opcache
   * pdo_mysql
@@ -51,3 +52,6 @@ job_name:
 * Shims to (de)activate xdebug and uopz
 * rsync and ssh
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
+
+## Gotchas
+* 7.2-rc does not come with xdebug, since it's not yet compatible
