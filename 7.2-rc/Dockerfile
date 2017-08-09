@@ -35,9 +35,9 @@ RUN set -xe \
   && phing -version \
   && pecl install uopz-5.0.2 \
   && chmod +x /usr/local/bin/uopz \
-  # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
+  # && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
   && pecl install ssh2-1.1.2 \
-  && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
+  && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config
