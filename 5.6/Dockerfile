@@ -39,7 +39,19 @@ RUN set -xe \
   # && echo "extension=uopz.so" > /usr/local/etc/php/conf.d/uopz.ini \
   && pecl install ssh2-0.13 \
   && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ssh2.ini \
-  && docker-php-ext-install opcache soap pdo_mysql intl bz2
+  && docker-php-ext-install opcache soap pdo_mysql intl bz2 \
+  && curl -o libsodium.tar.gz https://download.libsodium.org/libsodium/releases/LATEST.tar.gz \
+  && tar -xf libsodium.tar.gz \
+  && rm -f libsodium.tar.gz \
+  && mv libsodium* libsodium \
+  && cd libsodium \
+  && ./configure \
+  && make -s \
+  && make -s install \
+  && cd .. \
+  && rm -Rf libsodium \
+  && pecl install libsodium-1.0.6 \
+  && echo "extension=sodium.so" > ${PHP_INI_DIR}/conf.d/sodium.ini
 
 RUN pecl install xdebug \
   && chmod +x /usr/local/bin/xdebug \
