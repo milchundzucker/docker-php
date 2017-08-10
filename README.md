@@ -45,6 +45,7 @@ job_name:
   * opcache
   * pdo_mysql
   * soap
+  * sodium
   * ssh2
 * VCS Tools
   * git
@@ -55,3 +56,4 @@ job_name:
 
 ## Gotchas
 * 7.2-rc does not come with xdebug, since it's not yet compatible
+* 5.6 comes with old sodium (1.0.x) PECL extension which differs from 2.x significantly
