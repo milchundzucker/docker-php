@@ -51,7 +51,7 @@ RUN set -xe \
   && cd .. \
   && rm -Rf libsodium \
   && pecl install libsodium-1.0.6 \
-  && echo "extension=sodium.so" > ${PHP_INI_DIR}/conf.d/sodium.ini
+  && echo "extension=libsodium.so" > ${PHP_INI_DIR}/conf.d/libsodium.ini
 
 RUN pecl install xdebug \
   && chmod +x /usr/local/bin/xdebug \
