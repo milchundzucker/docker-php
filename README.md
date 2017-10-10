@@ -41,10 +41,12 @@ job_name:
 * Phing
 * PHP Extensions
   * bz2
+  * gmp
   * intl
   * opcache
   * pdo_mysql
   * soap
+  * sockets
   * sodium
   * ssh2
 * VCS Tools

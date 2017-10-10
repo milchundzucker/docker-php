@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   libssh2-1-dev \
   libicu-dev \
   libbz2-dev \
+  libgmp3-dev \
   --no-install-recommends && apt-get clean
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -38,7 +39,7 @@ RUN set -xe \
   # && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
   && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
-  && docker-php-ext-install opcache soap pdo_mysql intl bz2
+  && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config
 
