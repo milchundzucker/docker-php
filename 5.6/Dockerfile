@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
   libssh2-1-dev \
   libicu-dev \
   libbz2-dev \
+  libgmp3-dev \
   --no-install-recommends && apt-get clean
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -39,7 +40,9 @@ RUN set -xe \
   # && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
   && pecl install ssh2-0.13 \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
-  && docker-php-ext-install opcache soap pdo_mysql intl bz2 \
+  # Workaround for buggy PHP 5.6 configure with gmp
+  && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
+  && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets \
   && curl -o libsodium.tar.gz https://download.libsodium.org/libsodium/releases/LATEST.tar.gz \
   && tar -xf libsodium.tar.gz \
   && rm -f libsodium.tar.gz \
