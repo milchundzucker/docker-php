@@ -1,6 +1,13 @@
 FROM php:7.0
 MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
+ENV COMPOSER_CACHE_DIR /cache/composer
+ENV YARN_CACHE_FOLDER /cache/yarn
+ENV NPM_CONFIG_CACHE /cache/npm
+ENV bower_storage__packages /cache/bower
+ENV GEM_SPEC_CACHE /cache/gem
+ENV PIP_DOWNLOAD_CACHE /cache/pip
+
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/xdebug /usr/local/bin/xdebug
 COPY assets/uopz /usr/local/bin/uopz
