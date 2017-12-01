@@ -1,4 +1,4 @@
-FROM php:7.2-rc
+FROM php:7.2
 MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
 ENV COMPOSER_CACHE_DIR /cache/composer
@@ -43,7 +43,7 @@ RUN set -xe \
   && phing -version \
   && pecl install uopz-5.0.2 \
   && chmod +x /usr/local/bin/uopz \
-  # && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
+  && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
   && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets

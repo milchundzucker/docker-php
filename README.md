@@ -57,5 +57,5 @@ job_name:
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
 
 ## Gotchas
-* 7.2-rc does not come with xdebug, since it's not yet compatible
+* 7.2 does not come with xdebug, since it's not yet compatible (xdebug 2.6.0 will be)
 * 5.6 comes with old sodium (1.0.x) PECL extension which differs from 2.x significantly
