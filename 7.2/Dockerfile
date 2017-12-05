@@ -10,6 +10,7 @@ ENV PIP_DOWNLOAD_CACHE /cache/pip
 
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/uopz /usr/local/bin/uopz
+COPY assets/xdebug /usr/local/bin/xdebug
 
 RUN apt-get update && apt-get install -y \
   git-core \
@@ -47,6 +48,11 @@ RUN set -xe \
   && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets
+
+RUN pecl install xdebug-2.6.0alpha1 \
+  && chmod +x /usr/local/bin/xdebug \
+  && php -m
+  # && echo "zend_extension=xdebug.so" > ${PHP_INI_DIR}/conf.d/xdebug.ini
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config
 
