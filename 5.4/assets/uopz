@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+DST_DIR=`php --ini | grep "Scan for additional .ini files in:" | awk '{print $7}'`
+EXT_NAME=uopz
+# EXT_TYPE can be either "extension" or "zend_extension"
+EXT_TYPE=extension
+
+if [ $1 = "on" ]; then
+	echo "${EXT_TYPE}=${EXT_NAME}.so" > ${DST_DIR}/${EXT_NAME}.ini
+	echo "${EXT_NAME} ${EXT_TYPE} activated"
+else
+	rm -f ${DST_DIR}/${EXT_NAME}.ini
+	echo "${EXT_NAME} ${EXT_TYPE} deactivated"
+fi
