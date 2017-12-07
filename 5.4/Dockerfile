@@ -1,4 +1,4 @@
-FROM milchundzucker/unsupported-php-54:latest
+FROM milchundzucker/php-eol:5.4
 MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
 ENV COMPOSER_CACHE_DIR /cache/composer
