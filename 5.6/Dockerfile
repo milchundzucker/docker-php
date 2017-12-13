@@ -8,7 +8,7 @@ RUN apk add --update \
   && rm -rf /var/cache/apk/*
 
 FROM php:5.6
-MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
+LABEL maintainer="jens.kohl@milchundzucker.de"
 
 ENV COMPOSER_CACHE_DIR /cache/composer
 ENV YARN_CACHE_FOLDER /cache/yarn
