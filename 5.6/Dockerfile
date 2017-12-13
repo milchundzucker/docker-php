@@ -1,3 +1,12 @@
+FROM alpine:latest as builder
+RUN apk add --update \
+  openssl \
+  wget \
+  && wget -U "" https://www.milchundzucker.de/ROOT-CA.crt https://www.milchundzucker.de/milchundzucker-ca.crt \
+  && openssl x509 -inform DER -outform PEM -in ROOT-CA.crt -out ROOT-CA.crt \
+  && openssl x509 -inform DER -outform PEM -in milchundzucker-ca.crt -out milchundzucker-ca.crt \
+  && rm -rf /var/cache/apk/*
+
 FROM php:5.6
 MAINTAINER Jens Kohl <jens.kohl@milchundzucker.de>
 
@@ -7,6 +16,9 @@ ENV NPM_CONFIG_CACHE /cache/npm
 ENV bower_storage__packages /cache/bower
 ENV GEM_SPEC_CACHE /cache/gem
 ENV PIP_DOWNLOAD_CACHE /cache/pip
+
+COPY --from=builder /ROOT-CA.crt /usr/local/share/ca-certificates/ROOT-CA.crt
+COPY --from=builder /milchundzucker-ca.crt /usr/local/share/ca-certificates/milchundzucker-ca.crt
 
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/xdebug /usr/local/bin/xdebug
@@ -29,6 +41,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 
 RUN set -xe \
+  && update-ca-certificates \
   && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
   && cd /tmp \
