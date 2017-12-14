@@ -54,6 +54,7 @@ job_name:
   * subversion
 * Shims to (de)activate xdebug and uopz
 * rsync and ssh
+* trusted milchundzucker CA certificates
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
 
 ## Gotchas
