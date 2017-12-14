@@ -49,6 +49,7 @@ job_name:
   * sockets
   * sodium
   * ssh2
+  * zip
 * VCS Tools
   * git
   * subversion
