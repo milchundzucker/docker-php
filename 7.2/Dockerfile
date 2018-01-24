@@ -63,7 +63,7 @@ RUN set -xe \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets zip
 
-RUN pecl install xdebug-2.6.0beta1 \
+RUN pecl install xdebug-2.6.0RC2 \
   && chmod +x /usr/local/bin/xdebug \
   && php -m
   # && echo "zend_extension=xdebug.so" > ${PHP_INI_DIR}/conf.d/xdebug.ini
