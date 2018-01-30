@@ -77,7 +77,7 @@ RUN set -xe \
   && pecl install libsodium-1.0.6 \
   && echo "extension=libsodium.so" > ${PHP_INI_DIR}/conf.d/libsodium.ini
 
-RUN pecl install xdebug \
+RUN pecl install xdebug-2.5.5 \
   && chmod +x /usr/local/bin/xdebug \
   && php -m
   # && echo "zend_extension=xdebug.so" > ${PHP_INI_DIR}/conf.d/xdebug.ini
