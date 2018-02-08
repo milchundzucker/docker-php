@@ -47,9 +47,11 @@ RUN set -xe \
   && update-ca-certificates \
   && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
+  && curl -fsS https://composer.github.io/snapshots.pub -o /composer/keys.dev.pub \
+  && curl -fsS https://composer.github.io/releases.pub -o /composer/keys.tags.pub \
   && cd /tmp \
   && composer global require hirak/prestissimo \
-  && composer --version \
+  && composer diagnose \
   && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing --silent \
   && chmod +x /usr/local/bin/phing \
   && which phing \
