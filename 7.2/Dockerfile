@@ -20,6 +20,8 @@ ENV PIP_DOWNLOAD_CACHE /cache/pip
 COPY --from=builder /ROOT-CA.crt /usr/local/share/ca-certificates/ROOT-CA.crt
 COPY --from=builder /milchundzucker-ca.crt /usr/local/share/ca-certificates/milchundzucker-ca.crt
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/uopz /usr/local/bin/uopz
 COPY assets/xdebug /usr/local/bin/xdebug
@@ -46,11 +48,7 @@ RUN set -xe \
   && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
   && cd /tmp \
-  && php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php \
-  && php composer-setup.php \
-  && php -r "unlink('composer-setup.php');" \
-  && mv composer.phar /usr/local/bin/composer \
-  && which composer \
+  && composer global require hirak/prestissimo \
   && composer --version \
   && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing --silent \
   && chmod +x /usr/local/bin/phing \
