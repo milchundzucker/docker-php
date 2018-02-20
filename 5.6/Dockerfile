@@ -47,6 +47,7 @@ RUN set -xe \
   && update-ca-certificates \
   && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
+  && mkdir -p /composer \
   && curl -fsS https://composer.github.io/snapshots.pub -o /composer/keys.dev.pub \
   && curl -fsS https://composer.github.io/releases.pub -o /composer/keys.tags.pub \
   && cd /tmp \
