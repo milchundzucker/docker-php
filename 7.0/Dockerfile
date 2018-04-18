@@ -52,7 +52,6 @@ RUN set -xe \
   && curl -fsS https://composer.github.io/releases.pub -o /composer/keys.tags.pub \
   && cd /tmp \
   && composer global require hirak/prestissimo \
-  && composer diagnose \
   && curl -L http://www.phing.info/get/phing-latest.phar -o /usr/local/bin/phing --silent \
   && chmod +x /usr/local/bin/phing \
   && which phing \
