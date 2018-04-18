@@ -21,6 +21,7 @@ COPY --from=builder /ROOT-CA.crt /usr/local/share/ca-certificates/ROOT-CA.crt
 COPY --from=builder /milchundzucker-ca.crt /usr/local/share/ca-certificates/milchundzucker-ca.crt
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=milchundzucker/php-parallel-lint:latest /usr/local/bin/parallel-lint /usr/local/bin/parallel-lint
 
 COPY assets/ssh_config /root/.ssh/config
 COPY assets/uopz /usr/local/bin/uopz
