@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
   libbz2-dev \
   libzip-dev \
   libgmp3-dev \
+  libmcrypt-dev \
   --no-install-recommends && apt-get clean
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -62,7 +63,7 @@ RUN set -xe \
   # && echo "extension=uopz.so" > ${PHP_INI_DIR}/conf.d/uopz.ini \
   && pecl install ssh2-1.1.2 \
   && echo "extension=ssh2.so" > ${PHP_INI_DIR}/conf.d/ssh2.ini \
-  && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets zip \
+  && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets zip mcrypt \
   && curl -o libsodium.tar.gz https://download.libsodium.org/libsodium/releases/LATEST.tar.gz \
   && tar -xf libsodium.tar.gz \
   && rm -f libsodium.tar.gz \

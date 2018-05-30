@@ -43,11 +43,13 @@ job_name:
   * bz2
   * gmp
   * intl
+  * mcrypt (PHP <= 7.1)
   * opcache
   * pdo_mysql
   * soap
   * sockets
-  * sodium
+  * sodium1 (PHP <= 5.6)
+  * sodium2 (PHP >= 7.0)
   * ssh2
   * zip
 * VCS Tools
@@ -59,5 +61,5 @@ job_name:
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
 
 ## Gotchas
-* 5.4 & 5.6 come with old sodium (1.0.x) PECL extension which differs from 2.x significantly
+* 5.4, 5.5 & 5.6 come with old sodium (1.0.x) PECL extension which differs from 2.x significantly
 * 5.4 comes with outdated xdebug 2.2.7, since it's end of life
