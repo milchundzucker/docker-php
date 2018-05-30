@@ -39,19 +39,6 @@ job_name:
 ## What's installed?
 * composer
 * Phing
-* PHP Extensions
-  * bz2
-  * gmp
-  * intl
-  * mcrypt  ![PHP <= 7.1](https://img.shields.io/badge/PHP-%3C%3D%207.1-blue.svg)
-  * opcache
-  * pdo_mysql
-  * soap
-  * sockets
-  * sodium1 ![PHP <= 5.6](https://img.shields.io/badge/PHP-%3C%3D%205.6-blue.svg)
-  * sodium2  ![PHP >= 7.0](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)
-  * ssh2
-  * zip
 * VCS Tools
   * git
   * subversion
@@ -59,6 +46,23 @@ job_name:
 * rsync and ssh
 * trusted milchundzucker CA certificates
 * modified SSH client config to accept every host key for `*.milchundzucker.de`
+
+### PHP extensions
+
+| Extension | PHP Version constraints                                               |
+| --------- | --------------------------------------------------------------------- |
+| bz2       | none                                                                  |
+| gmp       | none                                                                  |
+| intl      | none                                                                  |
+| mcrypt    | ![PHP <= 7.1](https://img.shields.io/badge/PHP-%3C%3D%207.1-blue.svg) |
+| opcache   | none                                                                  |
+| pdo_mysql | none                                                                  |
+| soap      | none                                                                  |
+| sockets   | none                                                                  |
+| sodium1   | ![PHP <= 5.6](https://img.shields.io/badge/PHP-%3C%3D%205.6-blue.svg) |
+| sodium2   | ![PHP >= 7.0](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)    |
+| ssh2      | none                                                                  |
+| zip       | none                                                                  |
 
 ## Gotchas
 * 5.4, 5.5 & 5.6 come with old sodium (1.0.x) PECL extension which differs from 2.x significantly
