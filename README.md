@@ -27,7 +27,7 @@ A common task is to run phpunit tests with code coverage:
 
 ```yaml
 job_name:
-  image: milchundzucker/php-essentials:5.6
+  image: milchundzucker/php-essentials:7.2
   script:
     - composer install
     - xdebug on
@@ -43,13 +43,13 @@ job_name:
   * bz2
   * gmp
   * intl
-  * mcrypt (PHP <= 7.1)
+  * mcrypt  ![PHP <= 7.1](https://img.shields.io/badge/PHP-%3C%3D%207.1-blue.svg)
   * opcache
   * pdo_mysql
   * soap
   * sockets
-  * sodium1 (PHP <= 5.6)
-  * sodium2 (PHP >= 7.0)
+  * sodium1 ![PHP <= 5.6](https://img.shields.io/badge/PHP-%3C%3D%205.6-blue.svg)
+  * sodium2  ![PHP >= 7.0](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)
   * ssh2
   * zip
 * VCS Tools
@@ -63,3 +63,4 @@ job_name:
 ## Gotchas
 * 5.4, 5.5 & 5.6 come with old sodium (1.0.x) PECL extension which differs from 2.x significantly
 * 5.4 comes with outdated xdebug 2.2.7, since it's end of life
+* up to 7.1 mcrypt is included, from 7.2 onward it isn't part of the image anymore (since it was deprecated in 7.0 and removed in 7.2)
