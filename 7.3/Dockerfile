@@ -7,7 +7,7 @@ RUN apk add --update \
   && openssl x509 -inform DER -outform PEM -in milchundzucker-ca.crt -out milchundzucker-ca.crt \
   && rm -rf /var/cache/apk/*
 
-FROM colinodell/php-beta:7.3-beta1
+FROM php:7.3-rc
 LABEL maintainer="jens.kohl@milchundzucker.de"
 
 ENV COMPOSER_CACHE_DIR /cache/composer
@@ -46,7 +46,7 @@ ENV COMPOSER_HOME /composer
 
 RUN set -xe \
   && update-ca-certificates \
-  # && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
+  && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > ${PHP_INI_DIR}/conf.d/date_timezone.ini \
   && php -v \
   && mkdir -p /composer \
   && curl -fsS https://composer.github.io/snapshots.pub -o /composer/keys.dev.pub \
@@ -59,9 +59,9 @@ RUN set -xe \
   && phing -version \
   && docker-php-ext-install opcache soap pdo_mysql intl bz2 gmp sockets zip
 
-# RUN pecl install xdebug \
-#   && chmod +x /usr/local/bin/xdebug \
-#   && php -m
+RUN pecl install xdebug-2.7.0beta1 \
+  && chmod +x /usr/local/bin/xdebug \
+  && php -m
   # && echo "zend_extension=xdebug.so" > ${PHP_INI_DIR}/conf.d/xdebug.ini
 
 RUN cat $HOME/.ssh/config && chmod -R 600 $HOME/.ssh &&  ls -l $HOME/.ssh/config

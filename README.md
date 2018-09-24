@@ -61,10 +61,13 @@ job_name:
 | sockets   | none                                                                  |
 | sodium1   | ![PHP <= 5.6](https://img.shields.io/badge/PHP-%3C%3D%205.6-blue.svg) |
 | sodium2   | ![PHP >= 7.0](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)    |
-| ssh2      | none                                                                  |
+| ssh2      | ![PHP >= 7.2](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)    |
+| uopz      | ![PHP >= 7.2](https://img.shields.io/badge/PHP-%3E%3D7.0-blue.svg)    |
 | zip       | none                                                                  |
+| xdebug    | none                                                                  |
 
 ## Gotchas
 * 5.4, 5.5 & 5.6 come with old sodium (1.0.x) PECL extension which differs from 2.x significantly
 * 5.4 comes with outdated xdebug 2.2.7, since it's end of life
 * up to 7.1 mcrypt is included, from 7.2 onward it isn't part of the image anymore (since it was deprecated in 7.0 and removed in 7.2)
+* uopz and ssh2 PECL extensions aren't ready for PHP 7.3 RC yet
