@@ -7,7 +7,7 @@ RUN apk add --update \
   && openssl x509 -inform DER -outform PEM -in milchundzucker-ca.crt -out milchundzucker-ca.crt \
   && rm -rf /var/cache/apk/*
 
-FROM php:7.3-rc
+FROM php:7.3
 LABEL maintainer="jens.kohl@milchundzucker.de"
 
 ENV COMPOSER_CACHE_DIR /cache/composer
